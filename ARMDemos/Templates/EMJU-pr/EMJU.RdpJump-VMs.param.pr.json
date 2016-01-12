@@ -1,0 +1,66 @@
+﻿{
+ "location": {
+    "value": "West US"
+  },  
+  "virtualNetworkResourceGroup": {
+    "value": "EMJU-AZPR-Network"
+  },
+  "virtualNetworkName": {
+    "value": "EMJU-VNet"
+  },
+  "NSGName": {
+    "value": "RDP"
+  },
+  "newStorageAccountName": {
+    "value": "emjuazprrdpvms"
+  },
+  "storageAccountType": {
+    "value": "Standard_GRS"
+  },
+  "adminUsername": {
+    "value": "safewayadmin"
+  },
+  "adminPassword": {
+    "value": "s@few@yEmJu98"
+  },
+  "dnsNameForPublicIP": {
+    "value": "emjuazprrdp"
+  },
+  "windowsOSVersion": {
+    "value": "2012-R2-Datacenter"
+  },
+  "numberOfInstances": {
+    "value": 2
+  },
+  "vmSize": {
+    "value": "Standard_A2"
+  },
+  "vmNamePrefix": {
+    "value": "RDP-VM"
+  },
+  "osDiskNamePrefix": {
+    "value": "osdisk"
+  },
+  "nicNamePrefix": {
+    "value": "RDP-NIC"
+  },
+  "PublicIPAddressName": {
+    "value": "RDP-PIP"
+  },
+  "loadBalancerName": {
+    "value": "RPD-LB"
+  },
+  "loadBalancerFrontEndPort": {
+    "value": 3389
+  },
+  "loadBalancerBackEndPort": {
+    "value": 3389
+  },
+  "availabilitySetName": {
+    "value": "RDP-AVS"
+  },
+  "sshKeyData": {
+    "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4nk9a0z3bmmKaRWlA18wms/ojmh8k4JuCeaEmuLL7oGotJfs5CZw9O1WpDrhaatGdqk1HgOYCVBLqbCHRbq+HPf9lR4m8Rkn8flvCRaU9tKWeUnBgyfLOCuF0mxl8tvs4OCQCy4SfjDkwkEP8il4nphGrEr0cT3DQlcDQIU6RXrv2kudqE2TT3jCafGEustXGp7bR1wyJnTXU7iansSkt5piIJkS7LU6NhcwAytt+TIM+LLDx7FORj7YoooIQN+zx/QShNuQQTtnI6LZCkdbLVnvOjuoRgPAFjk9Iy1qfyC5NNYWDUoUpAXrmnjS0xbBe8SYSoc2DcaTTyET7gjEd imported-openssh-key"
+  }
+}
+

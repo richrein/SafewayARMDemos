@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "West US"
+    },
+    "newStorageAccountName": {
+      "value": "emjuazqa1akamaistrg"
+    },
+    "storageAccountType": {
+      "value": "Standard_GRS"
+    },
+    "blobStorageShareName": {
+      "value": "emjuazqa1sureroutes"
+    },
+    "blobStorageShareQuota": {
+      "value": "1"
+    }
+  }
+}

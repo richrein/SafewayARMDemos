@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "This is the region where the resources will be created"
+      }
+    },
+    "newStorageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Storage Account"
+      }
+    },
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+    "ftpFileShareName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the File Shared for SFTP VM"
+      }
+    },
+    "ftpFileShareQuota": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the File Shared for SFTP VM"
+      }
+    },
+    "installStorageShareName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the File Shared for SFTP VM"
+      }
+    },
+    "installStorageShareQuota": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the File Shared for SFTP VM"
+      }
+    }
+  },
+  "variables": {
+
+  },
+  "resources": [
+
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[parameters('newStorageAccountName')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "[parameters('storageAccountType')]"
+      }
+    }
+  ],
+  "outputs": {
+    "storageAccountName": {
+      "value": "[parameters('newStorageAccountName')]",
+      "type": "string"
+    },
+    "storageAccountKey": {
+      "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('newStorageAccountName')), '2015-05-01-preview').key1]",
+      "type": "string"
+    },
+    "ftpFileShareName": {
+      "value": "[parameters('ftpFileShareName')]",
+      "type": "string"
+    },
+    "ftpFileShareQuota": {
+      "value": "[parameters('ftpFileShareQuota')]",
+      "type": "string"
+    },
+    "installStorageShareName": {
+      "value": "[parameters('installStorageShareName')]",
+      "type": "string"
+    },
+    "installStorageShareQuota": {
+      "value": "[parameters('installStorageShareQuota')]",
+      "type": "string"
+    }
+  }
+}

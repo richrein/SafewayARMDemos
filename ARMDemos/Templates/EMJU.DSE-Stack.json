@@ -1,0 +1,436 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dc1NodeCount": {
+      "type": "int",
+      "defaultValue": 6,
+      "minValue": 1,
+      "maxValue": 39,
+      "metadata": {
+        "description": "The number of virtual machines to provision for data center 1"
+      }
+    },
+    "dc1FaultDomains": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "The number of fault domains for data center 1"
+      }
+    },
+    "dc1UpdateDomains": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "The number of update domains for data center 1"
+      }
+    },
+    "dc2NodeCount": {
+      "type": "int",
+      "defaultValue": 4,
+      "minValue": 1,
+      "maxValue": 39,
+      "metadata": {
+        "description": "The number of virtual machines to provision for data center 2"
+      }
+    },
+    "dc2FaultDomains": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "The number of fault domains for data center 2"
+      }
+    },
+    "dc2UpdateDomains": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "The number of update domains for data center 2"
+      }
+    },
+    "nodeCount": {
+      "type": "int",
+      "defaultValue": 10,
+      "minValue": 1,
+      "maxValue": 39,
+      "metadata": {
+        "description": "The number of virtual machines to provision for the cluster"
+      }
+    },
+    "clusterVmSize": {
+      "type": "string",
+      "defaultValue": "Standard_D12",
+      "allowedValues": [
+        "Standard_D3",
+        "Standard_D12",
+        "Standard_D13",
+        "Standard_D14",
+        "Standard_G2",
+        "Standard_G3",
+        "Standard_G4",
+        "Standard_G5"
+      ],
+      "metadata": {
+        "description": "The size of virtual machine to provision for each cluster node"
+      }
+    },
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Admin user name for the virtual machines"
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Admin password for the virtual machines"
+      }
+    },
+    "opsclusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "OpsCenter Cluster Name"
+      }
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "This is your Virtual Network's resource Group"
+      }
+    },
+    "templateBaseUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "Base url for all deployment templates"
+      }
+    },
+    "nodesTemplateFile": {
+      "type": "string",
+      "defaultValue": "DSE-nodesTemplate.json",
+      "metadata": {
+        "description": "file name for nodes deployment template"
+      }
+    },
+    "opsCenterTemplateFile": {
+      "type": "string",
+      "defaultValue": "DSE-opscenterTemplate.json",
+      "metadata": {
+        "description": "file name for opscenter deployment template"
+      }
+    },
+    "opsCenterInstallTemplateFile": {
+      "type": "string",
+      "defaultValue": "DSE-opscenterInstallTemplate.json",
+      "metadata": {
+        "description": "file name for opscenter install template"
+      }
+    },
+    "clusterIPRangeBase": {
+      "type": "string",
+      "defaultValue": "172.31.195.",
+      "metadata": {
+        "description": "base IP for cluster range"
+      }
+    },
+    "dc1clusterIPRangeStart": {
+      "type": "int",
+      "defaultValue": 101,
+      "metadata": {
+        "description": "start IP for data center 1 cluster range"
+      }
+    },
+    "dc2clusterIPRangeStart": {
+      "type": "int",
+      "defaultValue": 111,
+      "metadata": {
+        "description": "start IP for data center 2 cluster range"
+      }
+    },
+    "opsCenterIP": {
+      "type": "string",
+      "defaultValue": "172.31.195.100",
+      "metadata": {
+        "description": "IP for opsCenter"
+      }
+    },
+    "dc1namespace": {
+      "type": "string",
+      "defaultValue": "test1",
+      "metadata": {
+        "description": "Starting name of VMs"
+      }
+    },
+    "dc2namespace": {
+      "type": "string",
+      "defaultValue": "test2",
+      "metadata": {
+        "description": "Starting name of VMs"
+      }
+    }
+  },
+  "variables": {
+    "opsclusterName": "[parameters('opsclusterName')]",
+    "region": "[resourcegroup().location]",
+    "templateBaseUrl": "[parameters('templateBaseUrl')]",
+    "nodesTemplateUrl": "[concat(variables('templateBaseUrl'), parameters('nodesTemplateFile'))]",
+    "opsCenterTemplateUrl": "[concat(variables('templateBaseUrl'), parameters('opsCenterTemplateFile'))]",
+    "opsCenterInstallTemplateUrl": "[concat(variables('templateBaseUrl'), parameters('opsCenterInstallTemplateFile'))]",
+    "nodeList": "[concat(variables('dc1clusterRange').base, variables('dc1clusterRange').start, '-', parameters('nodeCount'))]",
+    "dc1StorageAccountName": "[concat(parameters('dc1namespace'),'strg')]",
+    "dc2StorageAccountName": "[concat(parameters('dc2namespace'),'strg')]",
+    "vnetName": "EMJU-VNet",
+    "subnetName": "Data",
+    "virtualNetworkResourceGroup": "[parameters('virtualNetworkResourceGroup')]",
+    "dc1ClusterRange": {
+      "base": "[parameters('clusterIPRangeBase')]",
+      "start": "[parameters('dc1ClusterIPRangeStart')]"
+    },
+    "dc2ClusterRange": {
+      "base": "[parameters('clusterIPRangeBase')]",
+      "start": "[parameters('dc2ClusterIPRangeStart')]"
+    },
+    "opsCenterIP": "[parameters('opsCenterIP')]",
+    "osSettings": {
+      "imageReference": {
+        "publisher": "Canonical",
+        "offer": "UbuntuServer",
+        "sku": "14.04.3-LTS",
+        "version": "latest"
+      },
+      "scripts": [
+        "[concat(variables('templateBaseUrl'), 'DSE_dseNode.sh')]",
+        "[concat(variables('templateBaseUrl'), 'DSE_opscenter.sh')]",
+        "[concat(variables('templateBaseUrl'), 'DSE_vm-disk-utils-0.1.sh')]"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('dc1StorageAccountName')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[variables('region')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('dc2StorageAccountName')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[variables('region')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
+    {
+      "name": "dc1nodes",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', variables('dc1StorageAccountName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('nodesTemplateUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "region": {
+            "value": "[variables('region')]"
+          },
+          "storageAccountName": {
+            "value": "[variables('dc1StorageAccountName')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "namespace": {
+            "value": "[parameters('dc1namespace')]"
+          },
+          "vmSize": {
+            "value": "[parameters('clusterVmSize')]"
+          },
+          "osSettings": {
+            "value": "[variables('osSettings')]"
+          },
+          "nodeCount": {
+            "value": "[parameters('dc1NodeCount')]"
+          },
+          "faultDomains": {
+            "value": "[parameters('dc1FaultDomains')]"
+          },
+          "updateDomains": {
+            "value": "[parameters('dc1UpdateDomains')]"
+          },
+          "staticIps": {
+            "value": "[variables('dc1clusterRange')]"
+          },
+          "vnetName": {
+            "value": "[variables('vnetName')]"
+          },
+          "subnetName": {
+            "value": "[variables('subnetName')]"
+          },
+          "virtualNetworkResourceGroup": {
+            "value": "[variables('virtualNetworkResourceGroup')]"
+          }
+        }
+      }
+    },
+    {
+      "name": "dc2nodes",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', variables('dc2StorageAccountName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('nodesTemplateUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "region": {
+            "value": "[variables('region')]"
+          },
+          "storageAccountName": {
+            "value": "[variables('dc2StorageAccountName')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "namespace": {
+            "value": "[parameters('dc2namespace')]"
+          },
+          "vmSize": {
+            "value": "[parameters('clusterVmSize')]"
+          },
+          "osSettings": {
+            "value": "[variables('osSettings')]"
+          },
+          "nodeCount": {
+            "value": "[parameters('dc2NodeCount')]"
+          },
+          "faultDomains": {
+            "value": "[parameters('dc2FaultDomains')]"
+          },
+          "updateDomains": {
+            "value": "[parameters('dc2UpdateDomains')]"
+          },
+          "staticIps": {
+            "value": "[variables('dc2clusterRange')]"
+          },
+          "vnetName": {
+            "value": "[variables('vnetName')]"
+          },
+          "subnetName": {
+            "value": "[variables('subnetName')]"
+          },
+          "virtualNetworkResourceGroup": {
+            "value": "[variables('virtualNetworkResourceGroup')]"
+          }
+        }
+      }
+    },
+    {
+      "name": "opscenter",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', variables('dc2StorageAccountName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('opsCenterTemplateUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "region": {
+            "value": "[variables('region')]"
+          },
+          "storageAccountName": {
+            "value": "[variables('dc2StorageAccountName')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "namespace": {
+            "value": "[parameters('dc2namespace')]"
+          },
+          "faultDomains": {
+            "value": "[parameters('dc2FaultDomains')]"
+          },
+          "updateDomains": {
+            "value": "[parameters('dc2UpdateDomains')]"
+          },
+          "osSettings": {
+            "value": "[variables('osSettings')]"
+          },
+          "staticIp": {
+            "value": "[variables('opsCenterIP')]"
+          },
+          "dnsName": {
+            "value": "[variables('opsclusterName')]"
+          },
+          "vnetName": {
+            "value": "[variables('vnetName')]"
+          },
+          "subnetName": {
+            "value": "[variables('subnetName')]"
+          },
+          "virtualNetworkResourceGroup": {
+            "value": "[variables('virtualNetworkResourceGroup')]"
+          }
+        }
+      }
+    },
+    {
+      "name": "opscenter-install",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "Microsoft.Resources/deployments/dc1nodes",
+        "Microsoft.Resources/deployments/dc2nodes",
+        "Microsoft.Resources/deployments/opscenter"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('opsCenterInstallTemplateUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "region": {
+            "value": "[variables('region')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "osSettings": {
+            "value": "[variables('osSettings')]"
+          },
+          "nodeList": {
+            "value": "[variables('nodeList')]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": { }
+}

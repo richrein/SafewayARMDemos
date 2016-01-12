@@ -1,0 +1,48 @@
+﻿{
+  "location": {
+    "value": "West US"
+  },
+  "virtualNetworkResourceGroup": {
+    "value": "Core-Group"
+  },
+  "virtualNetworkName": {
+    "value": "Safeway-Dev-QA1"
+  },
+  "DataNSGName": {
+    "value": "Tier-3"
+  },
+  "newStorageAccountName": {
+    "value": "emjuvmsarmcoregroup"
+  },
+  "storageAccountType": {
+    "value": "Standard_GRS"
+  },
+  "adminUsername": {
+    "value": "azureuser"
+  },
+  "adminPassword": {
+    "value": "just4S@feway"
+  },
+  "dnsNameForPublicIP-sftp": {
+    "value": "emjusftp"
+  },
+  "ubuntuOSVersion": {
+    "value": "14.04.2-LTS"
+  },
+  "sftpVmSize": {
+    "value": "Standard_A0"
+  },
+  "sftpVmName": {
+    "value": "emjuVM-SFTP"
+  },
+  "sftpNICName": {
+    "value": "emjuNIC-SFTP"
+  },
+  "sftpPublicIPAddressName": {
+    "value": "emjuSFTPPIP"
+  },
+  "sftpStaticIPAddress": {
+    "value": "172.31.195.10"
+  }
+}
+

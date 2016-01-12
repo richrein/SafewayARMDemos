@@ -1,0 +1,45 @@
+﻿{
+  "location": {
+    "value": "West US"
+  },
+  "virtualNetworkResourceGroup": {
+    "value": "EMJU-AZDV2-Network"
+  },
+  "virtualNetworkName": {
+    "value": "EMJU-VNet"
+  },
+  "NSGName": {
+    "value": "PartnerClipping"
+  },
+  "dnsNameForPublicIP": {
+    "value": "emjuazdv2partnerclipping"
+  },
+  "numberOfInstances": {
+    "value": 2
+  },
+  "PublicIPAddressName": {
+    "value": "PartnerClipping-PIP"
+  },
+  "applicationGatewayName": {
+    "value": "PartnerClipping-AG"
+  },
+  "applicationGatewaySubnet": {
+    "value": "AppGateways"
+  },
+  "applicationGatewayFrontEndPort": {
+    "value": 9000
+  },
+  "applicationGatewayBackEndAddressPrefix": {
+    "value": "10.0.12."
+  },
+  "applicationGatewayBaseIP": {
+    "value":  4
+  },
+  "applicationGatewayBackEndPort": {
+    "value": 9000
+  },
+  "applicationGatewaySkuName": {
+    "value": "Standard_Medium"
+    }
+}
+

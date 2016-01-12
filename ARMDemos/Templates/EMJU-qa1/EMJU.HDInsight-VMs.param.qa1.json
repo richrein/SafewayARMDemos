@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "West US"
+    },
+    "clusterName": {
+      "value": "hdi-qa1-cluster"
+    },
+    "clusterVersion": {
+      "value": "3.3"
+    },
+    "headNodeSize": {
+      "value": "Standard_D13"
+    },
+    "workerNodeSize": {
+      "value": "Standard_D13"
+    },
+    "workerNodeCount": {
+      "value": 4
+    },
+    "clusterLoginUserName": {
+      "value": "admin"
+    },
+    "clusterLoginPassword": {
+      "value": "Had00p!234"
+    },
+    "sshUserName": {
+      "value": "hadmin"
+    },
+    "sshPassword": {
+      "value": "Int3grat!on"
+    },
+    "existingClusterStorageResourceGroup": {
+      "value": "EMJU-AZQA1-HDIBASE"
+    },
+    "existingClusterStorageAccountName": {
+      "value": "emjuazqa1hdistorage"
+    },
+    "newOrExistingClusterStorageContainerName": {
+      "value": "hdi-container"
+    },
+    "existingHiveMetastoreServerName": {
+      "value": "emjuazqa1hdimetasql.database.windows.net"
+    },
+    "existingHiveMetastoreDatabaseName": {
+      "value": "emjuazqa1hdimetadb"
+    },
+    "existingHiveMetastoreUsername": {
+      "value": "hiveadmin"
+    },
+    "existingHiveMetastorePassword": {
+      "value": "H1veMetastor3"
+    },
+    "existingVirtualNetworkResourceGroup": {
+      "value": "EMJU-AZQA1-Network"
+    },
+    "existingVirtualNetworkName": {
+      "value": "EMJU-VNet"
+    },
+    "existingVirtualNetworkSubnetName": {
+      "value": "Data"
+    }
+  }
+}

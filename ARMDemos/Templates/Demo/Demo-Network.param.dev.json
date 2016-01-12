@@ -1,0 +1,30 @@
+﻿{
+ "location": {
+    "value": "West US"
+  },
+  "virtualNetworkName": {
+    "value": "EMJU-VNet"
+  },
+  "addressPrefix": {
+    "value": "10.0.0.0/16"
+  },
+  "DMZSubnetPrefix": {
+    "value": "10.0.0.0/24"
+  },
+  "SSHBastionSubnetPrefix": {
+    "value": "10.0.1.0/24"
+  },
+  "DataSubnetPrefix": {
+    "value": "10.0.2.0/24"
+  },
+  "DMZNSGName": {
+    "value": "DMZ"
+  },
+  "SSHNSGName": {
+    "value": "SSH"
+  },
+  "DataNSGName": {
+    "value": "Data"
+  }
+}
+

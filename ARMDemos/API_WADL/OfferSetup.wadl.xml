@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="OfferSetup" />
+  <resources base="http://nimbusqi.azure-api.net/J4UOffers1/services">
+    <resource path="/offer/create">
+      <doc title="Create Offer Service">Based on the given Offer details, this service will create a J4U offer, ready for preview. </doc>
+      <method name="POST">
+        <request />
+      </method>
+    </resource>
+    <resource path="/offer/update">
+      <doc title="Update Offer Service">This service will update an exiting J4U Offer with the Offer details passed in.  The offer passed in is expected to be complete, same requirements as in creating a new offer.</doc>
+      <method name="POST">
+        <request />
+      </method>
+    </resource>
+    <resource path="/offer/deactivate">
+      <doc title="Deactivate Offer Service">This service will deactivate an existing J4U offer. </doc>
+      <method name="POST">
+        <request />
+      </method>
+    </resource>
+    <resource path="/offer/promote">
+      <doc title="Promote Offer Service">This service will promote an offer from preview to production.</doc>
+      <method name="POST">
+        <request />
+      </method>
+    </resource>
+    <resource path="/offer/aggregator/updateStatus">
+      <doc title="Offer Update Aggregator Status  Service">This RESTful service does allows to update the aggregator offer status in Cassandra database and OMS.</doc>
+      <method name="POST">
+        <request>
+          <representation mediaType="application/xml">
+            <doc> &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;AggregatorOfferStatus xmlns="http://www.safeway.com/app/emju/offersetup/domain"&gt;
+    &lt;Aggregator&gt;COUPONSINC&lt;/Aggregator&gt;
+    &lt;AggregatorOfferStatusTypeId&gt;AD&lt;/AggregatorOfferStatusTypeId&gt;
+&lt;/AggregatorOfferStatus&gt;</doc>
+          </representation>
+        </request>
+      </method>
+    </resource>
+    <resource path="/offer/updateStatus">
+      <doc title="Offer Update Status  Service">This RESTful service does allows to update the offer status in Cassandra database and OMS.</doc>
+      <method name="POST">
+        <request>
+          <representation mediaType="application/xml">
+            <doc> &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;OfferStatus xmlns="http://www.safeway.com/app/emju/offersetup/domain"&gt;
+    &lt;ExternalOfferId&gt;13810-111567-00&lt;/ExternalOfferId&gt;
+    &lt;OfferStatusTypeId&gt;L&lt;/OfferStatusTypeId&gt;
+&lt;/OfferStatus&gt;
+</doc>
+          </representation>
+        </request>
+      </method>
+    </resource>
+  </resources>
+</application>

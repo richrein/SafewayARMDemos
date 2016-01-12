@@ -1,0 +1,90 @@
+﻿{
+ "location": {
+    "value": "West US"
+  },
+  "virtualNetworkName": {
+    "value": "EMJU-VNet"
+  },
+  "addressPrefix": {
+    "value": "10.0.0.0/16"
+  },
+  "DMZSubnetPrefix": {
+    "value": "10.0.0.0/24"
+  },
+  "SSHBastionSubnetPrefix": {
+    "value": "10.0.1.0/24"
+  },
+  "DataSubnetPrefix": {
+    "value": "10.0.2.0/24"
+  },
+  "DMZNSGName": {
+    "value": "DMZ"
+  },
+  "SSHNSGName": {
+    "value": "SSH"
+  },
+  "DataNSGName": {
+    "value": "Data"
+  },
+  "newStorageAccountName": {
+    "value": "emjuvms"
+  },
+  "storageAccountType": {
+    "value": "Standard_GRS"
+  },
+  "adminUsername": {
+    "value": "azureuser"
+  },
+  "adminPassword": {
+    "value": "just4Terr@ce"
+  },
+  "dnsNameForPublicIP-web": {
+    "value": "emjuweb"
+  },
+  "dnsNameForPublicIP": {
+    "value": "emjussh"
+  },
+  "ubuntuOSVersion": {
+    "value": "14.04.2-LTS"
+  },
+  "webVmSize": {
+    "value": "Standard_A0"
+  },
+  "sshVmSize": {
+    "value": "Standard_A0"
+  },
+  "dbVmSize": {
+    "value": "Standard_A3"
+  },
+  "webVmName": {
+    "value": "emjuVM-Web"
+  },
+  "sshVmName": {
+    "value": "emjuVM-SSH"
+  },
+  "dbVmName": {
+    "value": "emjuVM-Data"
+  },
+  "webNICName": {
+    "value": "emjuNIC-Web"
+  },
+  "sshNICName": {
+    "value": "emjuNIC-SSH"
+  },
+  "dbNICName": {
+    "value": "emjuNIC-Data"
+  },
+  "dmzPublicIPAddressName": {
+    "value": "emjuWebPIP"
+  },
+  "sshPublicIPAddressName": {
+    "value": "emjuSSHPIP"
+  },
+  "dbDataDiskInGB": {
+    "value": "200"
+  },
+  "sshKeyData": {
+    "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4nk9a0z3bmmKaRWlA18wms/ojmh8k4JuCeaEmuLL7oGotJfs5CZw9O1WpDrhaatGdqk1HgOYCVBLqbCHRbq+HPf9lR4m8Rkn8flvCRaU9tKWeUnBgyfLOCuF0mxl8tvs4OCQCy4SfjDkwkEP8il4nphGrEr0cT3DQlcDQIU6RXrv2kudqE2TT3jCafGEustXGp7bR1wyJnTXU7iansSkt5piIJkS7LU6NhcwAytt+TIM+LLDx7FORj7YoooIQN+zx/QShNuQQTtnI6LZCkdbLVnvOjuoRgPAFjk9Iy1qfyC5NNYWDUoUpAXrmnjS0xbBe8SYSoc2DcaTTyET7gjEd imported-openssh-key"
+  }
+}
+

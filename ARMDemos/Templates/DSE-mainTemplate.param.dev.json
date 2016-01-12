@@ -1,0 +1,38 @@
+﻿{
+  "clusterNodeCount": {
+    "value": 4
+  },
+  "clusterVmSize": {
+    "value": "Standard_D13"
+  },
+  "adminUsername": {
+    "value": "casadmin"
+  },
+  "adminPassword": {
+    "value": ""
+  },
+  "clusterName": {
+    "value": "sandboxc2"
+  },
+  "templateBaseUrl": {
+    "value": "https://raw.githubusercontent.com/rraju03/azure-resource-manager-dse/master/simple/"
+  },
+  "nodesTemplateFile": {
+    "value": "DSE-nodesTemplate.json"
+  },
+  "opsCenterTemplateFile": {
+    "value": "DSE-opscenterTemplate.json"
+  },
+  "opsCenterInstallTemplateFile": {
+    "value": "DSE-opscenterInstallTemplate.json"
+  },
+  "clusterIPRangeBase": {
+    "value": "172.31.195."
+  },
+  "clusterIPRangeStart": {
+    "value": 56
+  },
+  "opsCenterIP": {
+    "value": "172.31.195.55"
+  }
+}

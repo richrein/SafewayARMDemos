@@ -1,0 +1,243 @@
+﻿{
+  "location": {
+    "value": "West US"
+  },
+  "VNetName": {
+    "value": "EMJU-VNet"
+  },
+  "VNetAddressPrefix": {
+    "value": "10.0.0.0/16"
+  },
+  "SSHBastionName": {
+    "value": "SSH"
+  },
+  "SSHBastionSubnetPrefix": {
+    "value": "10.0.0.0/24"
+  },
+  "SSHBastionPort": {
+    "value": "22"
+  },
+  "RdpJumpName": {
+    "value": "RDP"
+  },
+  "RdpJumpSubnetPrefix": {
+    "value": "10.0.1.0/24"
+  },
+  "RdpJumpPort": {
+    "value": "3389"
+  },
+  "SftpName": {
+    "value": "Sftp"
+  },
+  "SftpSubnetPrefix": {
+    "value": "10.0.2.0/24"
+  },
+  "SftpPort": {
+    "value": "22"
+  },
+  "AppGatewayName": {
+    "value": "AppGateways"
+  },
+  "AppGatewaySubnetPrefix": {
+    "value": "10.0.10.0/24"
+  },
+  "AppGatewayPort": {
+    "value": "9000"
+  },
+  "PublicService1Name": {
+    "value": "Clipping"
+  },
+  "PublicService1SubnetPrefix": {
+    "value": "10.0.11.0/24"
+  },
+  "PublicService1Port": {
+    "value": "9000"
+  },
+  "PublicService2Name": {
+    "value": "PartnerClipping"
+  },
+  "PublicService2SubnetPrefix": {
+    "value": "10.0.12.0/24"
+  },
+  "PublicService2Port": {
+    "value": "9000"
+  },  
+  "PublicService3Name": {
+    "value": "Gallery"
+  },
+  "PublicService3SubnetPrefix": {
+    "value": "10.0.13.0/24"
+  },
+  "PublicService3Port": {
+    "value": "9000"
+  },
+  "PublicService4Name": {
+    "value": "CoreServices"
+  },
+  "PublicService4SubnetPrefix": {
+    "value": "10.0.14.0/24"
+  },
+  "PublicService4Port": {
+    "value": "9000"
+  },
+  "PublicService5Name": {
+    "value": "MyCard"
+  },
+  "PublicService5SubnetPrefix": {
+    "value": "10.0.15.0/24"
+  },
+  "PublicService5Port": {
+    "value": "9000"
+  },  
+  "PublicService6Name": {
+    "value": "MyList"
+  },
+  "PublicService6SubnetPrefix": {
+    "value": "10.0.16.0/24"
+  },
+  "PublicService6Port": {
+    "value": "9000"
+  },  
+  "PublicService7Name": {
+    "value": "Lite"
+  },
+  "PublicService7SubnetPrefix": {
+    "value": "10.0.17.0/24"
+  },
+  "PublicService7Port": {
+    "value": "9000"
+  },
+  "PublicService8Name": {
+    "value": "OfferSetup"
+  },
+  "PublicService8SubnetPrefix": {
+    "value": "10.0.18.0/24"
+  },
+  "PublicService8Port": {
+    "value": "9000"
+  },  
+  "PublicService9Name": {
+    "value": "PublicService9"
+  },
+  "PublicService9SubnetPrefix": {
+    "value": "10.0.19.0/24"
+  },
+  "PublicService9Port": {
+    "value": "9000"
+  },  
+  "PublicService10Name": {
+    "value": "ClipEventProcessing"
+  },
+  "PublicService10SubnetPrefix": {
+    "value": "10.0.20.0/24"
+  },
+  "PublicService10Port": {
+    "value": "9000"
+  },
+  "PublicService11Name": {
+    "value": "MyListMobile"
+  },
+  "PublicService11SubnetPrefix": {
+    "value": "10.0.22.0/24"
+  },
+  "PublicService11Port": {
+    "value": "9000"
+  },
+  "PublicService12Name": {
+    "value": "GalleryMobile"
+  },
+  "PublicService12SubnetPrefix": {
+    "value": "10.0.23.0/24"
+  },
+  "PublicService12Port": {
+    "value": "9000"
+  },  
+  "PublicService13Name": {
+    "value": "CoreservicesMobile"
+  },
+  "PublicService13SubnetPrefix": {
+    "value": "10.0.24.0/24"
+  },
+  "PublicService13Port": {
+    "value": "9000"
+  },
+  "PublicService14Name": {
+    "value": "SortByAisleMobile"
+  },
+  "PublicService14SubnetPrefix": {
+    "value": "10.0.25.0/24"
+  },
+  "PublicService14Port": {
+    "value": "9000"
+  },
+  "PublicService15Name": {
+    "value": "ScanMobile"
+  },
+  "PublicService15SubnetPrefix": {
+    "value": "10.0.26.0/24"
+  },
+  "PublicService15Port": {
+    "value": "9000"
+  },  
+  "PublicService16Name": {
+    "value": "WeeklyAdMobile"
+  },
+  "PublicService16SubnetPrefix": {
+    "value": "10.0.27.0/24"
+  },
+  "PublicService16Port": {
+    "value": "9000"
+  },  
+  "PublicService17Name": {
+    "value": "MiscServicesMobile"
+  },
+  "PublicService17SubnetPrefix": {
+    "value": "10.0.28.0/24"
+  },
+  "PublicService17Port": {
+    "value": "9000"
+  },
+  "PublicService18Name": {
+    "value": "PublicService18"
+  },
+  "PublicService18SubnetPrefix": {
+    "value": "10.0.29.0/24"
+  },
+  "PublicService18Port": {
+    "value": "9000"
+  },  
+  "PublicService19Name": {
+    "value": "PublicService19"
+  },
+  "PublicService19SubnetPrefix": {
+    "value": "10.0.30.0/24"
+  },
+  "PublicService19Port": {
+    "value": "9000"
+  },  
+  "PublicService20Name": {
+    "value": "PublicService20"
+  },
+  "PublicService20SubnetPrefix": {
+    "value": "10.0.31.0/24"
+  },
+  "PublicService20Port": {
+    "value": "9000"
+  },  
+  "PrivateService1Name": {
+    "value": "Management"
+  },
+  "PrivateService1SubnetPrefix": {
+    "value": "10.0.101.0/24"
+  },
+  "PrivateService1Port": {
+    "value": "9000"
+  },  
+  "DataNSGName": {
+    "value": "Data"
+  },
+  "DataSubnetPrefix": {
+    "value": "10.0.200.0/24"
+  }
+}
+

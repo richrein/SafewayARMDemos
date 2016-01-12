@@ -1,0 +1,27 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "redisCacheName": {
+      "value": "emjuazprredis"
+    },
+    "redisCacheLocation": {
+      "value": "West US"
+    },
+    "redisCacheSKU": {
+      "value": "Standard"
+    },
+    "redisCacheFamily": {
+      "value": "C"
+    },
+    "redisCacheCapacity": {
+      "value": 3
+    },
+    "diagnosticsStorageAccountName": {
+      "value": "emjuazprredisstrg"
+    },
+    "enableNonSslPort": {
+      "value": true
+    }
+  }
+}

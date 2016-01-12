@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="MyListPurchaseHistory" />
+  <resources base="http://nimbusqi.azure-api.net/J4UProgram1/services/purchasehistory">
+    <resource path="/">
+      <doc title="Purchase History Item Offers Retrieval Service">retrieves any PD/CC/YCS offers corresponding to 1 or more selected Purchase History items.</doc>
+      <method name="GET">
+        <request>
+          <param name="storeId" style="query" type="xs:number">
+            <doc>Prefered Selected Store Id. Should a valid numeric value. If store id is not provided, then the primary store id will be considered.</doc>
+          </param>
+          <param name="sort" style="query" type="xs:string">
+            <doc>The type of sort, the default is category</doc>
+            <option value="category" />
+            <option value="offers" />
+            <option value="purchaseFrequency" />
+            <option value="purchaseRecency" />
+            <option value="AZ" />
+            <option value="ZA" />
+          </param>
+        </request>
+      </method>
+    </resource>
+  </resources>
+</application>

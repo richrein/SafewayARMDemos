@@ -1,0 +1,36 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "West US"
+    },
+    "newStorageAccountName": {
+      "value": "emjuazqa1hdistorage"
+    },
+    "storageAccountType": {
+      "value": "Standard_GRS"
+    },
+    "sqlServerName": {
+      "value": "emjuazqa1hdimetasql"
+    },
+    "sqlServerLocation": {
+      "value": "West US"
+    },
+    "sqlAdministratorLogin": {
+      "value": "hiveadmin"
+    },
+    "sqlAdministratorLoginPassword": {
+      "value": "H1veMetastor3"
+    },
+    "sqlDatabaseName": {
+      "value": "emjuazqa1hdimetadb"
+    },
+    "sqlEdition": {
+      "value": "Standard"
+    },
+    "sqlRequestedServiceObjectiveName": {
+      "value": "S0"
+    }
+  }
+}

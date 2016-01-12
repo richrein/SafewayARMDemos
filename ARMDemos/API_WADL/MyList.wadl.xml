@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="MyList" />
+  <resources base="http://nimbusqi.azure-api.net/emlss/services">
+    <resource path="/integratedshoppinglist/list">
+      <doc title="MyList Service">Retrieves the items added to MyList</doc>
+      <method name="GET">
+        <request />
+      </method>
+    </resource>
+    <resource path="/integratedshoppinglist/list/getCount">
+      <doc title="MyList Count Service">Retrieves count of items added to MyList</doc>
+      <method name="GET">
+        <request />
+      </method>
+    </resource>
+    <resource path="/integratedshoppinglist/list/email">
+      <doc title="MyList Email Service">Email all or selected items</doc>
+      <method name="POST">
+        <request />
+      </method>
+    </resource>
+  </resources>
+</application>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="Gallery Admin" />
+  <resources base="http://nimbusqi.azure-api.net/J4UProgram1/services/internal/program">
+    <resource path="/{program}/offer/allocations">
+      <doc title="Offer Allocations Retrieval Service">Rerieves the allocated Offers for Offer program for a specific user.</doc>
+      <param name="program" style="template" type="xs:string" required="true">
+        <doc>Identifies the desired UI program. Possible values are given below</doc>
+        <option value="CD" />
+        <option value="CC" />
+        <option value="PD" />
+        <option value="YCS" />
+      </param>
+      <method name="GET">
+        <request>
+          <param name="hierarchies" style="query" type="xs:string">
+            <doc>If hierarchies=y, then hierarchy payload that is returned in Hierarchy Service will also be returned along with this Service. But if this query parameter is omitted or if its passed as hierarchies=n, then hierarchy payload won’t be returned.</doc>
+            <option value="y" />
+            <option value="n" />
+          </param>
+          <param name="storeId" style="query" type="xs:number">
+            <doc>This specified the store id for which offers will be retrived for. If store id is null or not specified it will default to the user primary store id.</doc>
+          </param>
+          <param name="topAllocations" style="query" type="xs:string">
+            <doc>Applicable only for YCS. If topAllocations=y, then top allocations by frequency and savings will also be returned. In addition to this, frequencyRank and savingsRank of each allocated offer will be returned</doc>
+            <option value="y" />
+            <option value="n" />
+          </param>
+          <param name="topAllocationsCount" style="query" type="xs:number">
+            <doc>Applicable only for YCS and topAllocations=y. This determines the number of offers that should be returned as part of frequency and savings top allocations. All allocated offers will have frequency and savings rank irrespective of topAllocationsCount. If this parameter is not passed, the default value will be taken as 10.</doc>
+          </param>
+          <param name="hiddenCategories" style="query" type="xs:string">
+            <doc>Applicable only for YCS and topAllocations=y. Coma separated hidden category ids used to filter out hidden category items in frequencyTopAllocations and savingsTopAllocations . If this parameter is not provided, this filtration will not be done.</doc>
+          </param>
+          <param name="view" style="query" type="xs:string">
+            <doc>Identifies the desired view type</doc>
+            <option value="campaign" />
+          </param>
+          <param name="eventId" style="query" type="xs:number">
+            <doc>Mandatory if view is ‘campaign’. Identifies the desired event for the campaign.</doc>
+          </param>
+        </request>
+      </method>
+    </resource>
+    <resource path="/{program}/topAllocations">
+      <doc title="TOP 10 Allocations Service">Retrieves top 10 allocations and currently applicable for YCS only.</doc>
+      <param name="program" style="template" type="xs:string" required="true">
+        <doc>Identifies the desired UI program</doc>
+        <option value="YCS" />
+      </param>
+      <method name="GET">
+        <request>
+          <param name="storeId" style="query" type="xs:number">
+            <doc>Prefered Store Id. Should be a valid numeric value. Will be defaulted to primary store if not provided</doc>
+          </param>
+          <param name="hiddenCategories" style="query" type="xs:string">
+            <doc>Coma separated hidden category ids. If this parameter is not provided, hidden category filtration will not be done.</doc>
+          </param>
+        </request>
+      </method>
+    </resource>
+  </resources>
+</application>

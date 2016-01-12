@@ -1,0 +1,27 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "West US"
+    },
+    "newStorageAccountName": {
+      "value": "emjuazqa1share"
+    },
+    "storageAccountType": {
+      "value": "Standard_GRS"
+    },
+    "ftpFileShareName": {
+      "value": "emjuazqa1ftpfiles"
+    },
+    "ftpFileShareQuota": {
+      "value": "1024"
+    },
+    "installStorageShareName": {
+      "value": "emjuazqa1installscripts"
+    },
+    "installStorageShareQuota": {
+      "value": "1"
+    }
+  }
+}

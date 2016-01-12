@@ -1,0 +1,75 @@
+﻿{
+  "location": {
+    "value": "West US"
+  },
+  "virtualNetworkResourceGroup": {
+    "value": "EMJU-AZPR-Network"
+  },
+  "virtualNetworkName": {
+    "value": "EMJU-VNet"
+  },
+  "NSGName": {
+    "value": "Lite"
+  },
+  "newStorageAccountName": {
+    "value": "emjuazprlitevms"
+  },
+  "storageAccountType": {
+    "value": "Standard_GRS"
+  },
+  "adminUsername": {
+    "value": "safewayadmin"
+  },
+  "adminPassword": {
+    "value": "s@f3W@yEmJU98"
+  },
+  "dnsNameForPublicIP": {
+    "value": "emjuazprlite"
+  },
+  "ubuntuOSVersion": {
+    "value": "14.04.2-LTS"
+  },
+  "numberOfInstances": {
+    "value": 2
+  },
+  "vmSize": {
+    "value": "Standard_A2"
+  },
+  "vmNamePrefix": {
+    "value": "Lite-VM"
+  },
+  "osDiskNamePrefix": {
+    "value": "osdisk"
+  },
+  "nicNamePrefix": {
+    "value": "Lite-NIC"
+  },
+  "PublicIPAddressName": {
+    "value": "Lite-PIP"
+  },
+  "loadBalancerName": {
+    "value": "Lite-LB"
+  },
+  "loadBalancerSubnet": {
+    "value": "AppGateways"
+  },
+  "loadBalancerFrontEndPort": {
+    "value": 9000
+  },
+  "loadBalancerBackEndAddressPrefix": {
+    "value": "10.0.17."
+  },
+  "loadBalancerBaseIP": {
+    "value":  4
+  },
+  "loadBalancerBackEndPort": {
+    "value": 9000
+  },
+  "loadBalancerSkuName": {
+    "value": "Standard_Medium"
+    },
+  "availabilitySetName": {
+    "value": "Lite-AVS"
+  }
+}
+

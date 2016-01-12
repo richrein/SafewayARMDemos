@@ -1,0 +1,2021 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "This is the region where the resources will be created"
+      }
+    },
+    "VNetName": {
+      "type": "string",
+      "metadata": {
+        "description": "This is your Virtual Network"
+      }
+    },
+    "VNetAddressPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "The CIDR address space for your Virtual Network in Azure"
+      }
+    },
+    "SSHBastionName": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to ssh bastion Subnet"
+      }
+    },
+    "SSHBastionSubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Bastion Subnet"
+      }
+    },
+    "SSHBastionPort": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to SSH Bastion Subnet"
+      }
+    },
+    "RdpJumpName": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to rdp jump Subnet"
+      }
+    },
+    "RdpJumpSubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the rdp jump Subnet"
+      }
+    },
+    "RdpJumpPort": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to rdp jump Subnet"
+      }
+    },
+    "AppGatewayName": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to application gateway Subnet"
+      }
+    },
+    "AppGatewaySubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the application gateway Subnet"
+      }
+    },
+    "AppGatewayPort": {
+      "type": "string",
+      "metadata": {
+        "description": "This is port that will be opened to rdp jump Subnet"
+      }
+    },
+    "SftpName": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to sftp Subnet"
+      }
+    },
+    "SftpSubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Bastion Subnet"
+      }
+    },
+    "SftpPort": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to SSH Bastion Subnet"
+      }
+    },
+    "PublicService1Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService1SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService1Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService2Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService2SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService2Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService3Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService3SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService3Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService4Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService4SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 4 Subnet"
+      }
+    },
+    "PublicService4Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService5Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService5SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService5Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService6Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService6SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService6Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService7Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService7SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService7Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService8Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService8SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService8Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService9Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService9SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService9Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService10Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService10SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService10Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService11Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService11SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService11Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService12Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService12SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService12Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService13Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService13SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService13Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService14Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService14SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 4 Subnet"
+      }
+    },
+    "PublicService14Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService15Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService15SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService15Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService16Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService16SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService16Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService17Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService17SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService17Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService18Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService18SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService18Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService19Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService19SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService19Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PublicService20Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to FrontEnd Subnet"
+      }
+    },
+    "PublicService20SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Public Service 1 Subnet"
+      }
+    },
+    "PublicService20Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to public service Subnet"
+      }
+    },
+    "PrivateService1Name": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to private service Subnet"
+      }
+    },
+    "PrivateService1SubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the private Service 1 Subnet"
+      }
+    },
+    "PrivateService1Port": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the port that will be opened to private service Subnet"
+      }
+    },
+    "DataNSGName": {
+      "type": "string",
+      "metadata": {
+        "description": "This is name of the networkSecurityGroup that will be assigned to Database Subnet"
+      }
+    },
+    "DataSubnetPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "This is CIDR prefix for the Database Subnet"
+      }
+    }
+  },
+  "variables": {
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('VNetName'))]",
+    "sshSubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('SSHBastionName'))]",
+    "sftpSubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('SftpName'))]",
+    "rdpJumpSubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('RdpJumpName'))]",
+    "appGatewaySubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('AppGatewayName'))]",
+    "publicService1SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService1Name'))]",
+    "publicService2SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService2Name'))]",
+    "publicService3SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService3Name'))]",
+    "publicService4SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService4Name'))]",
+    "publicService5SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService5Name'))]",
+    "publicService6SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService6Name'))]",
+    "publicService7SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService7Name'))]",
+    "publicService8SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService8Name'))]",
+    "publicService9SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService9Name'))]", 
+    "publicService10SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService10Name'))]",       
+    "publicService11SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService11Name'))]",
+    "publicService12SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService12Name'))]",
+    "publicService13SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService13Name'))]",
+    "publicService14SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService14Name'))]",
+    "publicService15SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService15Name'))]",
+    "publicService16SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService16Name'))]",
+    "publicService17SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService17Name'))]",
+    "publicService18SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService18Name'))]",
+    "publicService19SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService19Name'))]",
+    "publicService20SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PublicService20Name'))]",
+    "privateService1SubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('PrivateService1Name'))]",          
+    "dataSubnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('DataNSGName'))]"
+
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('SSHBastionName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-inbound",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('SSHBastionPort')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('RdpJumpName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-inbound",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('RdpJumpPort')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "[parameters('RdpJumpSubnetPrefix')]",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('AppGatewayName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('AppGatewayPort')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },    
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('SftpName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "sftp-inbound",
+            "properties": {
+              "description": "Allow sftp",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('SftpPort')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "[parameters('SftpSubnetPrefix')]",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService1Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService1Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService2Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService2Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService3Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService3Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService4Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService4Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService5Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService5Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService6Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService6Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService7Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService7Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService8Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService8Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService9Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService9Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService10Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService10Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+        {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService11Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService11Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService12Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService12Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService13Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService13Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService14Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService14Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService15Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService15Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService16Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService16Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService17Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService17Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService18Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService18Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService19Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService19Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PublicService20Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PublicService20Port')]",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('PrivateService1Name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh-bastion",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "rule_play",
+            "properties": {
+              "description": "Allow play",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[parameters('PrivateService1Port')]",
+              "sourceAddressPrefix": "[parameters('VNetAddressPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('DataNSGName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "ssh_inbound",
+            "properties": {
+              "description": "Allow SSH from Bastion",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "sourceAddressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "destinationAddressPrefix": "10.0.2.0/24",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService1_Datastax",
+            "properties": {
+              "description": "Allow PlayService1 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService1SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 110,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService2_Datastax",
+            "properties": {
+              "description": "Allow PlayService2 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService2SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 120,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService3_Datastax",
+            "properties": {
+              "description": "Allow PlayService3 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService3SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 130,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService4_Datastax",
+            "properties": {
+              "description": "Allow PlayService4 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService4SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 140,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService5_Datastax",
+            "properties": {
+              "description": "Allow PlayService5 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService5SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 150,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService6_Datastax",
+            "properties": {
+              "description": "Allow PlayService6 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService6SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 160,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService7_Datastax",
+            "properties": {
+              "description": "Allow PlayService7 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService7SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 170,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService8_Datastax",
+            "properties": {
+              "description": "Allow PlayService8 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService8SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 180,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService9_Datastax",
+            "properties": {
+              "description": "Allow PlayService9 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService9SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 190,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService10_Datastax",
+            "properties": {
+              "description": "Allow PlayService10 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService10SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
+            }
+          },
+                    {
+            "name": "Allow_PlayService11_Datastax",
+            "properties": {
+              "description": "Allow PlayService11 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService11SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 210,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService12_Datastax",
+            "properties": {
+              "description": "Allow PlayService12 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService12SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 220,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService13_Datastax",
+            "properties": {
+              "description": "Allow PlayService13 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService13SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 230,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService14_Datastax",
+            "properties": {
+              "description": "Allow PlayService14 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService14SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 240,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService15_Datastax",
+            "properties": {
+              "description": "Allow PlayService15 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService15SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 250,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService16_Datastax",
+            "properties": {
+              "description": "Allow PlayService16 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService16SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 260,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService17_Datastax",
+            "properties": {
+              "description": "Allow PlayService17 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService17SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 270,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService18_Datastax",
+            "properties": {
+              "description": "Allow PlayService18 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService18SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 280,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService19_Datastax",
+            "properties": {
+              "description": "Allow PlayService19 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService19SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 290,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_PlayService20_Datastax",
+            "properties": {
+              "description": "Allow PlayService20 Datastax",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "9042",
+              "sourceAddressPrefix": "[parameters('PublicService20SubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 300,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_RdpJump_Datastax_Admin",
+            "properties": {
+              "description": "Allow RdpJump Datastax http access",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "8888",
+              "sourceAddressPrefix": "[parameters('RdpJumpSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 3000,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Allow_https_from_rdp_inbound",
+            "properties": {
+              "description": "Allow https from rdp",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "443",
+              "sourceAddressPrefix": "[parameters('RdpJumpSubnetPrefix')]",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 4000,
+              "direction": "Inbound"
+            }
+          },
+        ]
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('VNetName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('SSHBastionName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('RdpJumpName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('AppGatewayName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('SftpName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService1Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService2Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService3Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService4Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService5Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService6Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService7Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService8Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService9Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService10Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService11Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService12Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService13Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService14Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService15Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService16Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService17Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService18Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService19Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PublicService20Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('PrivateService1Name'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', parameters('DataNSGName'))]"
+      ],
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('VNetAddressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('SSHBastionName')]",
+            "properties": {
+              "addressPrefix": "[parameters('SSHBastionSubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('SSHBastionName'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('RdpJumpName')]",
+            "properties": {
+              "addressPrefix": "[parameters('RdpJumpSubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('RdpJumpName'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('AppGatewayName')]",
+            "properties": {
+              "addressPrefix": "[parameters('AppGatewaySubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('AppGatewayName'))]"
+              }
+            }
+          },          
+          {
+            "name": "[parameters('SftpName')]",
+            "properties": {
+              "addressPrefix": "[parameters('SftpSubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('SftpName'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService1Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService1SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService1Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService2Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService2SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService2Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService3Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService3SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService3Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService4Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService4SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService4Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService5Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService5SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService5Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService6Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService6SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService6Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService7Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService7SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService7Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService8Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService8SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService8Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService9Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService9SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService9Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService10Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService10SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService10Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService11Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService11SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService11Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService12Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService12SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService12Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService13Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService13SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService13Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService14Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService14SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService14Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService15Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService15SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService15Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService16Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService16SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService16Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService17Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService17SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService17Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService18Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService18SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService18Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService19Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService19SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService19Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PublicService20Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PublicService20SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PublicService20Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('PrivateService1Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('PrivateService1SubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('PrivateService1Name'))]"
+              }
+            }
+          },
+          {
+            "name": "[parameters('DataNSGName')]",
+            "properties": {
+              "addressPrefix": "[parameters('DataSubnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('DataNSGName'))]"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

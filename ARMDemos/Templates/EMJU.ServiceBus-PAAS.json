@@ -1,0 +1,209 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "This is the region where the resources will be created"
+      }
+    },
+    "sbNamespace": {
+      "type": "string",
+      "metadata": {
+        "description": "The service bus namespace"
+      }
+    },
+    "primaryKeySeed": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 6,
+      "defaultValue": "1234a5"
+    },
+    "secondaryKeySeed": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 6,
+      "defaultValue": "ac34a5"
+    },
+    "maxSizeForClipEventTopic": {
+      "type": "string",
+      "metadata": {
+        "description": "Maximum size in megabytes"
+      }
+    },
+    "msgTimeToLiveForClipEventTopic": {
+      "type": "string",
+      "metadata": {
+        "description": "Time to live in days before the message expires"
+      }
+    },
+    "maxSizeForEmailEventTopic": {
+      "type": "string",
+      "metadata": {
+        "description": "Maximum size in megabytes"
+      }
+    },
+    "msgTimeToLiveForEmailEventTopic": {
+      "type": "string",
+      "metadata": {
+        "description": "Time to live in days before the message expires"
+      }
+    }
+  },
+  "variables": {
+    "location": "[parameters('location')]",
+    "sbVersion": "[providers('Microsoft.ServiceBus', 'namespaces').apiVersions[0]]",
+    "topic1Name": "clip-event",
+    "clipEventSub1": "clip-audit-listener",
+    "clipEventSub2": "clip-copient-listener",
+    "clipEventSub3": "clip-accounting-listener",
+    "topic2Name": "email-event",
+    "emailEventSub1": "email-listener",
+    "defaultSASKeyName": "RootManageSharedAccessKey",
+    "authRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('sbNamespace'), variables('defaultSASKeyName'))]",
+    "sendAuthRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('sbNamespace'), 'SendOnlyKey')]",
+    "listenAuthRuleResourceId": "[resourceId('Microsoft.ServiceBus/namespaces/authorizationRules', parameters('sbNamespace'), 'ListenOnlyKey')]",
+    "primaryKey": "[base64(concat(uniqueString(resourceGroup().id, deployment().name,parameters('primaryKeySeed')),parameters('primaryKeySeed'), uniqueString(resourceGroup().id,parameters('primaryKeySeed'))))]",
+    "secondaryKey": "[base64(concat(uniqueString(resourceGroup().id, deployment().name,parameters('secondaryKeySeed')),parameters('secondaryKeySeed'), uniqueString(resourceGroup().id,parameters('secondaryKeySeed'))))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "[variables('sbVersion')]",
+      "name": "[parameters('sbNamespace')]",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "location": "[variables('location')]",
+      "properties": {
+        "messagingSku": 2
+      },
+      "resources": [
+        {
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[variables('topic1Name')]",
+          "type": "Topics",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('sbNamespace'))]"
+          ],
+          "properties": {
+            "path": "[variables('topic1Name')]",
+            "maxSizeInMegabytes": "[parameters('maxSizeForClipEventTopic')]",
+            "defaultMessageTimeToLive": "[parameters('msgTimeToLiveForClipEventTopic')]",
+            "enableBatchedOperations": "false",
+            "enableFilteringMessagesBeforePublishing": "false",
+            "enablePartitioning": "false"
+          },
+          "resources": [
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "[variables('clipEventSub1')]",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('topic1Name')]"
+              ],
+              "properties": {
+              }
+            },
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "[variables('clipEventSub2')]",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('topic1Name')]"
+              ],
+              "properties": {
+              }
+            },
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "[variables('clipEventSub3')]",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('topic1Name')]"
+              ],
+              "properties": {
+              }
+            }
+          ]
+        },
+        {
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[variables('topic2Name')]",
+          "type": "Topics",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('sbNamespace'))]"
+          ],
+          "properties": {
+            "path": "[variables('topic2Name')]",
+            "maxSizeInMegabytes": "[parameters('maxSizeForEmailEventTopic')]",
+            "defaultMessageTimeToLive": "[parameters('msgTimeToLiveForEmailEventTopic')]",
+            "enableBatchedOperations": "false",
+            "enableFilteringMessagesBeforePublishing": "false",
+            "enablePartitioning": "false"
+          },
+          "resources": [
+            {
+              "apiVersion": "[variables('sbVersion')]",
+              "name": "[variables('emailEventSub1')]",
+              "type": "Subscriptions",
+              "dependsOn": [
+                "[variables('topic2Name')]"
+              ],
+              "properties": {
+              }
+            }
+          ]
+        },
+        {
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[concat(parameters('sbNamespace'),'/SendOnlyKey')]",
+          "type": "Microsoft.ServiceBus/namespaces/authorizationRules",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('sbNamespace'))]"
+          ],
+          "location": "[variables('location')]",
+          "properties": {
+            "KeyName": "SendOnlyKey",
+            "ClaimType": "SendSharedAccessKey",
+            "ClaimValue": "None",
+            "PrimaryKey": "[variables('primaryKey')]",
+            "SecondaryKey": "[variables('secondaryKey')]",
+            "Rights": [ "Send" ],
+            "Revision": -1
+          }
+        },
+        {
+          "apiVersion": "[variables('sbVersion')]",
+          "name": "[concat(parameters('sbNamespace'),'/ListenOnlyKey')]",
+          "type": "Microsoft.ServiceBus/namespaces/authorizationRules",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('sbNamespace'))]"
+          ],
+          "location": "[variables('location')]",
+          "properties": {
+            "KeyName": "ListenOnlyKey",
+            "ClaimType": "ListenSharedAccessKey",
+            "ClaimValue": "None",
+            "PrimaryKey": "[base64(concat(uniqueString(resourceGroup().id, deployment().name,parameters('primaryKeySeed')),parameters('primaryKeySeed'), uniqueString(resourceGroup().id,parameters('primaryKeySeed'))))]",
+            "SecondaryKey": "[base64(concat(uniqueString(resourceGroup().id, deployment().name,parameters('secondaryKeySeed')),parameters('secondaryKeySeed'), uniqueString(resourceGroup().id,parameters('secondaryKeySeed'))))]",
+            "Rights": [ "Listen" ],
+            "Revision": -1
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "NamespaceDefaultConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('authRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
+    },
+    "SendOnlyConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('sendAuthRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
+    },
+    "ListenOnlyConnectionString": {
+      "type": "string",
+      "value": "[listkeys(variables('listenAuthRuleResourceId'), variables('sbVersion')).primaryConnectionString]"
+    }
+  }
+}

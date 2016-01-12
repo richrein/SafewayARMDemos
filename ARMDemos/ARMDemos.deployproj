@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>fd1ed14f-0b9a-4de1-b73e-3212dbba9177</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkIdentifier>Deployment</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>1.0</TargetFrameworkVersion>
+    <PrepareForBuildDependsOn>
+    </PrepareForBuildDependsOn>
+  </PropertyGroup>
+  <Import Condition=" Exists('Deployment.targets') " Project="Deployment.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- vertag<:>start tokens<:>maj.min -->
+  <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
+  <!-- vertag<:>end -->
+  <ItemGroup>
+    <Folder Include="Tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Akamai\files\100x100.gif" />
+    <None Include="Akamai\files\120x80.gif" />
+    <None Include="Akamai\files\320x240.gif" />
+    <None Include="Akamai\files\340x123.gif" />
+    <None Include="Akamai\files\386x320.gif" />
+    <None Include="Akamai\files\400x400.gif" />
+    <None Include="Akamai\files\500x500.gif" />
+    <None Include="Akamai\files\540x320.gif" />
+    <None Include="Akamai\files\600x400.gif" />
+    <None Include="Akamai\files\640x480.gif" />
+    <None Include="Akamai\files\780x620.gif" />
+    <None Include="Akamai\files\800x600.gif" />
+    <None Include="Akamai\files\akaspacer.gif" />
+    <None Include="Akamai\files\background_main_content.png" />
+    <None Include="Akamai\files\background_tile2.gif" />
+    <None Include="Akamai\files\bg3.png" />
+    <None Include="Akamai\files\bg_black.png" />
+    <None Include="Akamai\files\bg_right_bottom.png" />
+    <None Include="Akamai\files\caret_bullet.gif" />
+    <None Include="Akamai\files\caret_bullet_black.png" />
+    <None Include="Akamai\files\dash_bullet.gif" />
+    <None Include="Akamai\files\dash_bullet_black.png" />
+    <None Include="Akamai\files\dash_bullet_blue.gif" />
+    <None Include="Akamai\files\footer_separator.gif" />
+    <None Include="Akamai\files\global.js" />
+    <None Include="Akamai\files\pg-002.css" />
+    <None Include="Akamai\files\plus_bullet.gif" />
+    <None Include="Akamai\files\roi.jpg" />
+    <None Include="Akamai\files\style.css" />
+    <None Include="Akamai\files\swfobject.js" />
+    <None Include="Akamai\sla-test-object.html" />
+    <None Include="Akamai\sureroute-test-object.html" />
+    <None Include="API_WADL\Akamai_SureRoute.wadl.xml" />
+    <None Include="API_WADL\Copient_Services.wadl.xml" />
+    <None Include="API_WADL\Coreservices_Admin.wadl.xml" />
+    <None Include="API_WADL\Coreservices_emlsm.wadl.xml" />
+    <None Include="API_WADL\Coreservices.wadl.xml" />
+    <None Include="API_WADL\Customer_Clipping.wadl.xml" />
+    <None Include="API_WADL\Customer_Profile_Lookup.wadl.xml" />
+    <None Include="API_WADL\Gallery_Admin.wadl.xml" />
+    <None Include="API_WADL\Gallery.wadl.xml" />
+    <None Include="API_WADL\MyCard_Admin.wadl.xml" />
+    <None Include="API_WADL\MyCard.wadl.xml" />
+    <None Include="API_WADL\MyList.wadl.xml" />
+    <None Include="API_WADL\MyListPurchaseHistory.wadl.xml" />
+    <None Include="API_WADL\OfferSetup.wadl.xml" />
+    <None Include="API_WADL\Partner_Clipping.wadl.xml" />
+    <None Include="Deployment.targets">
+      <Visible>False</Visible>
+    </None>
+    <Content Include="Scripts\Demo\Deploy-AzureResourceGroup-Network.DEV.ps1" />
+    <Content Include="Scripts\Demo\Deploy-AzureResourceGroup-VMs-Data.DEV.ps1" />
+    <Content Include="Scripts\Demo\Deploy-AzureResourceGroup-VMs-DMZ.DEV.ps1" />
+    <Content Include="Scripts\Demo\Deploy-AzureResourceGroup-VMs-SFTP-NonNet.DEV.ps1" />
+    <Content Include="Scripts\Demo\Deploy-AzureResourceGroup-VMs-SSH.DEV.ps1" />
+    <Content Include="Scripts\Demo\Deploy-AzureResourceGroup-VMs.DEV.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.HDInsight-Base.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.AkamaiRoutes-Storage.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.APIM-PAAS.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.HDInsight-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.FileShare-Storage.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.Lite-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.Management-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.RdpJump-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.SFTP-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.WeeklyAdMobile-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.SortByAisleMobile-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.PartnerClipping-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.ScanMobile-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.OfferSetup-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.MyList-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.MyListMobile-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.MyCard-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.MiscServicesMobile-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.Gallery-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.GalleryMobile-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.CoreServices-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.CoreServicesMobile-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.ClipEventProcessing-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.Clipping-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.SSH-VMs.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.Network.ps1" />
+    <Content Include="Scripts\Deploy-EMJU.PartnerClippingService-Gateway.dev.ps1" />
+    <Content Include="Templates\Demo\Demo-Network-Core.json" />
+    <Content Include="Templates\Demo\Demo-Network.json" />
+    <Content Include="Templates\Demo\Demo-VMs-Data.json" />
+    <Content Include="Templates\Demo\Demo-VMs-DMZ.json" />
+    <Content Include="Templates\Demo\Demo-VMs-SFTP-NoNet.json" />
+    <Content Include="Templates\Demo\Demo-VMs-SSH.json" />
+    <Content Include="Templates\Demo\Demo-VMs.json" />
+    <Content Include="Templates\Demo\Demo.json" />
+    <Content Include="Templates\EMJU.PrivateService-VMs.json" />
+    <Content Include="Templates\EMJU.PublicService-Gateway.json" />
+    <Content Include="Templates\EMJU.PublicService-VMs.json" />
+    <Content Include="Templates\EMJU.RdpJump-VMs.json" />
+    <Content Include="Templates\EMJU.SFTP-VMs.json" />
+    <Content Include="Templates\EMJU.Network.json" />
+    <Content Include="Templates\EMJU.SSH-VMs.json" />
+    <None Include="Extension_Scripts\DSE_dseNode.sh" />
+    <None Include="Extension_Scripts\DSE_opscenter.sh" />
+    <None Include="Extension_Scripts\DSE_vm-disk-utils-0.1.sh" />
+    <None Include="Extension_Scripts\NewRelicInstall.sh" />
+    <None Include="Extension_Scripts\PlayServerInstall.sh" />
+    <None Include="Extension_Scripts\SFTPServerInstall.sh" />
+    <None Include="Extension_Scripts\WebServerInstall.sh" />
+    <None Include="Scripts\Deploy-EMJU.ServiceBus-PAAS.ps1" />
+    <None Include="Scripts\Deploy-EMJU.DSE-VMs.ps1" />
+    <None Include="Scripts\Deploy-EMJU.Redis-Cache.ps1" />
+    <None Include="Scripts\MasterDeploy-EMJU.PR.ps1" />
+    <None Include="Scripts\MasterDeploy-EMJU.QA1.ps1" />
+    <None Include="Scripts\MasterDeploy-EMJU.QA.ps1" />
+    <None Include="Scripts\MasterDeploy-EMJU.DV.ps1" />
+    <None Include="Scripts\MasterDeploy-EMJU.Development.ps1" />
+    <None Include="Scripts\MasterDeploy-EMJU.Perf.ps1" />
+    <None Include="Templates\DSE-mainTemplate.json" />
+    <None Include="Templates\DSE-mainTemplate.param.dev.json" />
+    <None Include="Templates\DSE-nodesTemplate.json" />
+    <None Include="Templates\DSE-opscenterInstallTemplate.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.HDInsight-Base.param.qa1.json" />
+    <None Include="Templates\EMJU.HDInsight-Base.json" />
+    <None Include="Templates\EMJU-pf\EMJU.HDInsight-VMs.param.pf.json" />
+    <None Include="Templates\EMJU-pr\EMJU.FileShare-Storage.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.Network.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PrivateService-VMs-Management.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-ClipEventProcessing.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-Clipping.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-CoreServices.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-CoreServicesMobile.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-Gallery.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-GalleryMobile.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-Lite.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-MiscServicesMobile.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-MyCard.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-MyList.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-MyListMobile.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-OfferSetup.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-PartnerClipping.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-ScanMobile.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-SortByAisleMobile.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.PublicService-VMs-WeeklyAdMobile.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.RdpJump-VMs.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.RedisCache-PAAS.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.ServiceBus-PAAS.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.SFTP-VMs.param.pr.json" />
+    <None Include="Templates\EMJU-pr\EMJU.SSH-VMs.param.pr.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.AkamaiRoutes-Storage.param.qa1.json" />
+    <None Include="Templates\EMJU.AkamaiRoutes-Storage.json" />
+    <None Include="Templates\EMJU-pf\EMJU.FileShare-Storage.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.RedisCache-PAAS.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.ServiceBus-PAAS.param.pf.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.ServiceBus-PAAS.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.DSE-Stack.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.RedisCache-PAAS.param.qa1.json" />
+    <None Include="Templates\EMJU.DSE-OpsCenterVMs.json" />
+    <None Include="Templates\EMJU.DSE-OpsCenterInstall.json" />
+    <None Include="Templates\EMJU.DSE-Nodes.json" />
+    <None Include="Templates\EMJU.DSE-Stack.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.HDInsight-VMs.param.qa1.json" />
+    <None Include="Templates\EMJU.HDInsight-VMs.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.FileShare-Storage.param.qa1.json" />
+    <None Include="Templates\EMJU.FileShare-Storage.json" />
+    <None Include="Templates\Demo\Demo-Network-Core.param.dev.json" />
+    <None Include="Templates\Demo\Demo-Network.param.dev.json" />
+    <None Include="Templates\Demo\Demo-VMs-Data.param.dev.json" />
+    <None Include="Templates\Demo\Demo-VMs-DMZ.param.dev.json" />
+    <None Include="Templates\Demo\Demo-VMs-SFTP-NoNet.param.dev.json" />
+    <None Include="Templates\Demo\Demo-VMs-SSH.param.dev.json" />
+    <None Include="Templates\Demo\Demo-VMs.param.dev.json" />
+    <None Include="Templates\Demo\Demo.param.dev.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-Lite.param.dv.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-Lite.param.pf.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-Lite.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.Network.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PrivateService-VMs-Management.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-Gateway-Clipping.param.dv.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-Gateway-PartnerClipping.param.dv.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-ClipEventProcessing.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-Clipping.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-CoreServices.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-CoreServicesMobile.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-Gallery.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-GalleryMobile.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-MiscServicesMobile.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-MyCard.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-MyList.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-MyListMobile.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-OfferSetup.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-PartnerClipping.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-ScanMobile.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-SortByAisleMobile.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.PublicService-VMs-WeeklyAdMobile.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.RdpJump-VMs.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.SFTP-VMs.param.qa1.json" />
+    <None Include="Templates\EMJU-qa1\EMJU.SSH-VMs.param.qa1.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-Lite.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.Network.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PrivateService-VMs-Management.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-Gateway-Clipping.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-Gateway-PartnerClipping.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-ClipEventProcessing.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-Clipping.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-CoreServices.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-CoreServicesMobile.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-Gallery.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-GalleryMobile.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-MiscServicesMobile.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-MyCard.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-MyList.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-MyListMobile.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-OfferSetup.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-PartnerClipping.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-ScanMobile.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-SortByAisleMobile.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.PublicService-VMs-WeeklyAdMobile.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.RdpJump-VMs.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.SFTP-VMs.param.qa.json" />
+    <None Include="Templates\EMJU-qa\EMJU.SSH-VMs.param.qa.json" />
+    <None Include="Templates\EMJU-dv\EMJU.Network.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PrivateService-VMs-Management.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-Gateway-Clipping.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-Gateway-PartnerClipping.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-ClipEventProcessing.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-Clipping.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-CoreServices.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-CoreServicesMobile.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-Gallery.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-GalleryMobile.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-MiscServicesMobile.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-MyCard.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-MyList.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-MyListMobile.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-OfferSetup.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-PartnerClipping.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-ScanMobile.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-SortByAisleMobile.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.PublicService-VMs-WeeklyAdMobile.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.RdpJump-VMs.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.SFTP-VMs.param.dv.json" />
+    <None Include="Templates\EMJU-dv\EMJU.SSH-VMs.param.dv.json" />
+    <None Include="Templates\EMJU-pf\EMJU.Network.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PrivateService-VMs-Management.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-ClipEventProcessing.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-Clipping.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-CoreServices.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-CoreServicesMobile.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-Gallery.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-GalleryMobile.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-MiscServicesMobile.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-MyCard.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-MyList.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-MyListMobile.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-OfferSetup.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-PartnerClipping.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-ScanMobile.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-SortByAisleMobile.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.PublicService-VMs-WeeklyAdMobile.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.RdpJump-VMs.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.SFTP-VMs.param.pf.json" />
+    <None Include="Templates\EMJU-pf\EMJU.SSH-VMs.param.pf.json" />
+    <None Include="Templates\EMJU.RedisCache-PAAS.json" />
+    <None Include="Templates\EMJU.ServiceBus-PAAS.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-Lite.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.Network.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PrivateService-VMs-Management.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-Gateway-Clipping.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-Gateway-PartnerClipping.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-ClipEventProcessing.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-Clipping.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-CoreServices.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-CoreServicesMobile.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-Gallery.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-GalleryMobile.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-MiscServicesMobile.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-MyCard.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-MyList.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-MyListMobile.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-OfferSetup.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-PartnerClipping.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-ScanMobile.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-SortByAisleMobile.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.PublicService-VMs-WeeklyAdMobile.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.RdpJump-VMs.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.SFTP-VMs.param.dev.json" />
+    <None Include="Templates\J4UDevelopment\EMJU.SSH-VMs.param.dev.json" />
+    <None Include="Templates\opscentor.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tools\AzCopy.exe" />
+    <None Include="Tools\Microsoft.Data.Edm.dll">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Tools\Microsoft.Data.OData.dll">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Tools\Microsoft.Data.Services.Client.dll">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Tools\Microsoft.WindowsAzure.Storage.dll">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Tools\Microsoft.WindowsAzure.Storage.DataMovement.dll">
+      <Visible>False</Visible>
+    </None>
+  </ItemGroup>
+  <Target Name="GetReferenceAssemblyPaths" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="Partner Clipping" />
+  <resources base="https://nimbusqi.azure-api.net/services/partner">
+    <resource path="/clip/offers">
+      <doc title="Partner Clip Service">This RESTful service allows J4U users to Clip/add offers to their shopping list &amp; non-J4U users to add the offers to their card via. Copient. </doc>
+      <method name="POST">
+        <request />
+      </method>
+    </resource>
+  </resources>
+</application>

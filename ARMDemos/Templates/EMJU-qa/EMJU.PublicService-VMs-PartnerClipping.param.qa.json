@@ -1,0 +1,75 @@
+﻿{
+  "location": {
+    "value": "West US"
+  },
+  "virtualNetworkResourceGroup": {
+    "value": "EMJU-AZQA-Network"
+  },
+  "virtualNetworkName": {
+    "value": "EMJU-VNet"
+  },
+  "NSGName": {
+    "value": "PartnerClipping"
+  },
+  "newStorageAccountName": {
+    "value": "emjuazqaprtnclipvms"
+  },
+  "storageAccountType": {
+    "value": "Standard_GRS"
+  },
+  "adminUsername": {
+    "value": "safewayadmin"
+  },
+  "adminPassword": {
+    "value": "s@f3W@yEmJU"
+  },
+  "dnsNameForPublicIP": {
+    "value": "emjuazqaprtnclip"
+  },
+  "ubuntuOSVersion": {
+    "value": "14.04.2-LTS"
+  },
+  "numberOfInstances": {
+    "value": 2
+  },
+  "vmSize": {
+    "value": "Standard_A2"
+  },
+  "vmNamePrefix": {
+    "value": "PartnerClipping-VM"
+  },
+  "osDiskNamePrefix": {
+    "value": "osdisk"
+  },
+  "nicNamePrefix": {
+    "value": "PartnerClipping-NIC"
+  },
+  "PublicIPAddressName": {
+    "value": "PartnerClipping-PIP"
+  },
+  "loadbalancerGatewayName": {
+    "value": "PartnerClipping-AG"
+  },
+  "loadbalancerGatewaySubnet": {
+    "value": "AppGateways"
+  },
+  "loadbalancerGatewayFrontEndPort": {
+    "value": 9000
+  },
+  "loadbalancerGatewayBackEndAddressPrefix": {
+    "value": "10.0.12."
+  },
+  "loadbalancerGatewayBaseIP": {
+    "value":  4
+  },
+  "loadbalancerGatewayBackEndPort": {
+    "value": 9000
+  },
+  "loadbalancerGatewaySkuName": {
+    "value": "Standard_Medium"
+    },
+  "availabilitySetName": {
+    "value": "PartnerClipping-AVS"
+  }
+}
+
