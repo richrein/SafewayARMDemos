@@ -1,0 +1,68 @@
+﻿{
+  "dc1NodeCount": {
+    "value": 6
+  },
+  "dc2NodeCount": {
+    "value": 4
+  },
+  "nodeCount": {
+    "value": 10
+  },
+  "dc1FaultDomains": {
+    "value": 3
+  },
+  "dc1UpdateDomains": {
+    "value": 18
+  },
+  "dc2FaultDomains": {
+    "value": 2
+  },
+  "dc2UpdateDomains": {
+    "value": 18
+  },
+  "clusterVmSize": {
+    "value": "Standard_D3"
+  },
+  "adminUsername": {
+    "value": "casadmin"
+  },
+  "adminPassword": {
+    "value": "C@ss@ndr@1"
+  },
+  "opsclusterName": {
+    "value": "ops"
+  },
+  "templateBaseUrl": {
+    "value": "https://emjuazprshare.blob.core.windows.net/emjuazprinstallscripts/"
+  },
+  "nodesTemplateFile": {
+    "value": "EMJU.DSE-Nodes.json"
+  },
+  "opsCenterTemplateFile": {
+    "value": "EMJU.DSE-OpsCenterVMs.json"
+  },
+  "opsCenterInstallTemplateFile": {
+    "value": "EMJU.DSE-OpsCenterInstall.json"
+  },
+  "clusterIPRangeBase": {
+    "value": "10.0.200."
+  },
+  "dc1clusterIPRangeStart": {
+    "value": 10
+  },
+  "dc2clusterIPRangeStart": {
+    "value": 16
+  },
+  "opsCenterIP": {
+    "value": "10.0.200.6"
+  },
+  "dc1namespace": {
+    "value": "dc1"
+  },
+  "dc2namespace": {
+    "value": "dc2"
+  },
+  "virtualNetworkResourceGroup": {
+    "value": "EMJU-AZPR-Network"
+  }
+}
