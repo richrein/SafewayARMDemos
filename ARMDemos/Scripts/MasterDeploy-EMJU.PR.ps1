@@ -19,7 +19,7 @@ $ServiceBusTemplate = "..\Templates\EMJU.ServiceBus-PAAS.json"
 $HDInsightTemplate = "..\Templates\EMJU.HDInsight-VMs.json"
 $PublicServiceTemplate = "..\Templates\EMJU.PublicService-VMs.json"
 $PrivateServiceTemplate = "..\Templates\EMJU.PrivateService-VMs.json"
-$DSETemplate = "..\Templates\DSE-mainTemplate.json"
+$DSETemplate = "..\Templates\EMJU.DSE-Stack.json"
 
 $subscriptionArgs = @()
 $subscriptionArgs += ("-ResourceGroupLocation", $ResourceGroupLocation)
