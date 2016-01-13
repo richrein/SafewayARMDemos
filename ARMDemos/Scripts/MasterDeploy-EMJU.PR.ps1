@@ -19,6 +19,7 @@ $ServiceBusTemplate = "..\Templates\EMJU.ServiceBus-PAAS.json"
 $HDInsightTemplate = "..\Templates\EMJU.HDInsight-VMs.json"
 $PublicServiceTemplate = "..\Templates\EMJU.PublicService-VMs.json"
 $PrivateServiceTemplate = "..\Templates\EMJU.PrivateService-VMs.json"
+$DSETemplate = "..\Templates\DSE-mainTemplate.json"
 
 $subscriptionArgs = @()
 $subscriptionArgs += ("-ResourceGroupLocation", $ResourceGroupLocation)
@@ -63,7 +64,7 @@ $invokeArgs += ("-ResourceGroupName","EMJU-AZPR-SSH-VMs")
 $invokeArgs += ("-TemplateFile", $SSHBastionTemplate)
 $invokeArgs += ("-TemplateParametersFile","..\Templates\EMJU-pr\EMJU.SSH-VMs.param.pr.json")
 $invokeArgs += $subscriptionArgs
-Invoke-Expression ".\Deploy-EMJU.SSH-VMs.ps1 $invokeArgs"
+#Invoke-Expression ".\Deploy-EMJU.SSH-VMs.ps1 $invokeArgs"
 
 ###############################
 ##FileSharing
@@ -253,7 +254,7 @@ $invokeArgs += ("-ResourceGroupName","EMJU-AZPR-DSE")
 $invokeArgs += ("-TemplateFile", $DSETemplate)
 $invokeArgs += ("-TemplateParametersFile","..\Templates\EMJU-pr\EMJU.DSE-Stack.param.pr.json")
 $invokeArgs += $subscriptionArgs
-#Invoke-Expression ".\Deploy-EMJU.DSE-VMs.ps1 $invokeArgs"
+Invoke-Expression ".\Deploy-EMJU.DSE-VMs.ps1 $invokeArgs"
 
 ###############################
 ##HDInsight
